@@ -1,0 +1,21 @@
+<%- include("partials/header.ejs") %>
+
+<section id="posts">
+  <h2>Feed de Reflexões</h2>
+  <ul>
+    <% if (posts.length > 0) { %>
+      <% posts.forEach((post, index) => { %>
+        <li>
+          <p><%= post.content %></p>
+          <small><%= post.createdAt %></small>
+          <button class="editar" onclick="location.href='/posts/<%= index %>/editar'">Editar</button>
+          <button class="excluir" onclick="fetch('/posts/<%= index %>', { method: 'DELETE' }).then(() => location.reload())">Excluir</button>
+        </li>
+      <% }); %>
+    <% } else { %>
+      <li>Nenhuma reflexão encontrada.</li>
+    <% } %>
+  </ul>
+</section>
+
+<%- include("partials/footer.ejs") %>

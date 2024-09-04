@@ -1,0 +1,23 @@
+<%- include("partials/header.ejs") %>
+
+<section id="new-post">
+  <h2>Compartilhe sua reflexão</h2>
+  <form action="/posts" method="POST">
+    <textarea name="content" placeholder="Digite sua reflexão aqui"></textarea>
+    <button type="submit">Publicar</button>
+  </form>
+</section>
+
+<section id="posts">
+  <h2>Feed de Reflexões</h2>
+  <ul>
+    <% posts.forEach(post => { %>
+      <li>
+        <p><%= post.content %></p>
+        <small><%= post.createdAt %></small>
+      </li>
+    <% }); %>
+  </ul>
+</section>
+
+<%- include("partials/footer.ejs") %>
